@@ -1,0 +1,89 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@page session="false"%>
+<html>
+<head>
+<title>Show Departments</title>
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+table {
+  padding: 50px;
+  margin: 30px;
+  width: 50px;
+}
+/* Set a style for the submit button */
+.registerbtn {
+  background-color: #4CAF50;
+  color: white;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100px;
+  height:30px;
+  opacity: 0.9;
+}
+
+.buttonx {
+  background-color: #4CAF50;
+  color: white;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100px;
+  height:30px;
+  opacity: 0.9;
+}
+
+.registerbtn:hover {
+  opacity: 1;
+}
+select{
+ width: 100px;
+ height: 26px;
+}
+.main {
+	margin-top: 60px;
+  margin-left: 30px; /* Same as the width of the sidenav */
+}</style>
+</head>
+<body>
+	<jsp:include page="menu.jsp" />
+	<body>
+
+<div class="main"><br>
+	<h1>Department</h1>
+    <p>Please use filter for specific results.</p>
+    <hr>
+	<div id="getDepartmentBy">
+		<form:form action="/getDepartmentById" method="post">
+			<a href="/getDepartmentById"><input type="SUBMIT" class="registerbtn" value="FILTER" size="70" /></input></a></p>
+		</form:form>
+	</div></div>
+	<div class="table-responsive" style="background: white;">
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>Department Number</th>
+						<th>Department Name</th>
+						<th>HOD</th>
+						<th>StartDate</th>
+						<th>No. of employees</th>
+					</tr>
+				</thead>
+				<tbody>
+				<c:forEach var="listValue" items="${employees}">
+		
+					<tr th:each="review : ${listValue}">
+						<td th:text="${review.dno}">${listValue.dno}</td>
+						<td th:text="${review.dname}">${listValue.dname}</td>
+						<td th:text="${review.hodid}">${listValue.hodid}</td>
+						<td th:text="${review.startdate}">${listValue.startdate}</td>
+						<td th:text="${review.noemp}">${listValue.noemp}</td>
+					</tr></c:forEach>
+				</tbody>
+			</table>
+		</div>
+</body>
+</html>

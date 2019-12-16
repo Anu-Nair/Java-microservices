@@ -1,0 +1,8 @@
+applications:
+- name: demoutkanurose
+path: target\demoutkanurose.war
+domain: cfapps.io
+memory: 1G
+instances: 1
+services:
+- mysql
